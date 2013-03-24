@@ -156,11 +156,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 14, all.scss */
 html {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 1000, color-stop(0%, #d6effc), color-stop(100%, #00a9a9));
-  background-image: -webkit-linear-gradient(#d6effc, #00a9a9 1000px);
-  background-image: -moz-linear-gradient(#d6effc, #00a9a9 1000px);
-  background-image: -o-linear-gradient(#d6effc, #00a9a9 1000px);
-  background-image: linear-gradient(#d6effc, #00a9a9 1000px);
+  background-image: url(/images/noise.png), -webkit-gradient(linear, 50% 0%, 50% 1000, color-stop(0%, #d6effc), color-stop(100%, #00a9a9));
+  background-image: url(/images/noise.png), -webkit-linear-gradient(#d6effc, #00a9a9 1000px);
+  background-image: url(/images/noise.png), -moz-linear-gradient(#d6effc, #00a9a9 1000px);
+  background-image: url(/images/noise.png), -o-linear-gradient(#d6effc, #00a9a9 1000px);
+  background-image: url(/images/noise.png), linear-gradient(#d6effc, #00a9a9 1000px);
   background-color: #00a9a9; }
 
 /* line 19, all.scss */
@@ -173,7 +173,7 @@ header {
   background: url(/images/logo.png) no-repeat center;
   height: 150px;
   background-size: auto 100%;
-  text-indent: 100%; }
+  text-indent: 200%; }
 
 /* line 31, all.scss */
 h1 {
