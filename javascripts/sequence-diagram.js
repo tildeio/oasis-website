@@ -7,3 +7,4 @@ function(){"use strict";function AssertException(message){this.message=message}f
 /*
 //@ sourceMappingURL=sequence-diagram-min.js.map
 */
+;

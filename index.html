@@ -1,0 +1,371 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>Welcome to Oasis</title>
+    
+    <link href="/stylesheets/normalize.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/stylesheets/all.css" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/all.js" type="text/javascript"></script>
+  </head>
+  
+  <body class="index">
+    <header>Oasis.js</header>
+
+    <div id="content">
+      <div class="blurb">
+  <p>
+    Oasis.js helps you structure communication between multiple
+    <strong>untrusted sandboxes</strong>. It builds on the APIs
+    in HTML5, backporting them to older browsers when necessary.
+  </p>
+  <p>
+    Oasis.js uses the concepts in <strong>capability-based
+    security</strong> to help you safely expose capabilities
+    and data to untrusted code, secure in the knowledge that
+    the sandboxes can only communicate with each other and the
+    outside world through those capabilities.
+  </p>
+</div>
+
+<h2>Getting Started</h2>
+
+<p>First, create a service that you would like to expose:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> PingService = Oasis.Service.extend({
+
+});
+</pre></td>
+</tr></table>
+</div>
+<p>Next, create a sandbox with access to that service. The sandbox&#39;s
+URL should be a JavaScript file. Oasis.js will take care of creating
+an iframe (or WebWorker) and executing the JavaScript inside of it.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>Oasis.createSandbox(<span class="string"><span class="delimiter">'</span><span class="content">pingpong.js</span><span class="delimiter">'</span></span>, {
+  <span class="key">services</span>: {
+    <span class="key">ping</span>: PingService
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>This will give the sandbox access to the <code>PingService</code>.</p>
+
+<p>In <code>pingpong.js</code>, we&#39;ll set up a consumer for the service:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> PingConsumer = Oasis.Consumer.extend({
+
+});
+</pre></td>
+</tr></table>
+</div>
+<p>And connect it to the service in the parent:</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre>Oasis.connect({
+  <span class="key">consumers</span>: {
+    <span class="key">ping</span>: PingConsumer
+  }
+})
+</pre></td>
+</tr></table>
+</div>
+<p>That gives you an idea of the basic communication structure. Now,
+let&#39;s update the <code>PingService</code> to ping the sandbox.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> PingService = Oasis.Service.extend({
+  <span class="function">initialize</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.send(<span class="string"><span class="delimiter">'</span><span class="content">ping</span><span class="delimiter">'</span></span>);
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>The <code>initialize</code> method on your service will be called once the
+handshake with the sandbox is complete. In this case, the service
+sends a <code>ping</code> message to the sandbox.</p>
+
+<p>To respond back to the host environment, let&#39;s update our <code>PingConsumer</code>.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> PingConsumer = Oasis.Consumer.extend({
+  <span class="key">events</span>: {
+    <span class="function">ping</span>: <span class="keyword">function</span>() {
+      <span class="local-variable">this</span>.send(<span class="string"><span class="delimiter">'</span><span class="content">pong</span><span class="delimiter">'</span></span>);
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>Great! Now we have the host environment sending a message to the
+sandbox, and the sandbox sending a message back. Let&#39;s close the
+loop by listening for <code>pong</code> on the <code>PingService</code>.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+11
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> PingService = Oasis.Service.extend({
+  <span class="function">initialize</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.send(<span class="string"><span class="delimiter">'</span><span class="content">ping</span><span class="delimiter">'</span></span>);
+  },
+
+  <span class="key">events</span>: {
+    <span class="function">pong</span>: <span class="keyword">function</span>() {
+      alert(<span class="string"><span class="delimiter">&quot;</span><span class="content">Got a pong!</span><span class="delimiter">&quot;</span></span>);
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>This is the basic flow of events in Oasis. First, Oasis.js does the
+handshake for you. Once the handshake is complete, you can send
+events back and forth.</p>
+<div class='diagram'>Host-->Sandbox:
+Note right of Host: Handshake
+Sandbox-->Host:
+Host->Sandbox: event:ping
+Sandbox->Host: event:pong
+</div><h2 class='anchorable-toc' id='toc_requests'>Requests</h2>
+<p>In the above example, the <code>ping</code> event was really sent from the host
+to the sandbox as a <strong>request</strong> for a <code>pong</code>.</p>
+
+<p>Because this is so common, Oasis.js provides a <code>request</code> API. Let&#39;s
+take a look at what it looks like to make a request from the host to
+the sandbox.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> PingService = Oasis.Service.extend({
+  <span class="function">initialize</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.request(<span class="string"><span class="delimiter">'</span><span class="content">ping</span><span class="delimiter">'</span></span>).then(<span class="keyword">function</span>(data) {
+      console.log(data);
+    });
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>The <code>request</code> API uses <a href="http://promises-aplus.github.com/promises-spec/">Promises</a>, a standard way of waiting for
+a result for some asynchronous request.</p>
+
+<p>In this case, the <em>Promise</em> crosses the boundary into the sandbox, and
+can be fulfilled in the <em>Consumer</em>.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> PingConsumer = Oasis.Consumer.extend({
+  <span class="key">requests</span>: {
+    <span class="function">ping</span>: <span class="keyword">function</span>(resolver) {
+      resolver.resolve(<span class="string"><span class="delimiter">'</span><span class="content">pong</span><span class="delimiter">'</span></span>);
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>Instead of listening for a <code>ping</code> <strong>event</strong>, we&#39;re listening for a <code>ping</code>
+<strong>request</strong>. Request handlers get a resolver for the promise on the other side
+of the boundary that they can resolve with some data.</p>
+
+<p>The interaction between the host and sandbox looks very similar to the
+interaction with events.</p>
+<div class='diagram'>Host-->Sandbox:
+Note right of Host: Handshake
+Sandbox-->Host:
+Host->Sandbox: request:ping
+Sandbox->Host: resolve:ping with 'pong'
+</div>
+<p>Either side of the boundary (the host and the sandbox) can initiate a request
+that is handled by the <code>requests</code> hash on the other side.</p>
+<h2 class='anchorable-toc' id='toc_sending-data-with-an-event'>Sending Data With an Event</h2>
+<p>When sending an event, you can send additional data. Simply pass additional
+parameters to the <code>send</code> method.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> PingService = Oasis.Service.extend({
+  <span class="function">initialize</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.send(<span class="string"><span class="delimiter">'</span><span class="content">ping</span><span class="delimiter">'</span></span>, { <span class="key">additional</span>: <span class="string"><span class="delimiter">'</span><span class="content">data</span><span class="delimiter">'</span></span> });
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>The additional parameters will be available in the event handler on the other
+side of the pipe.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> PingConsumer = Oasis.Consumer.extend({
+  <span class="key">events</span>: {
+    <span class="function">ping</span>: <span class="keyword">function</span>(options) {
+      console.log(options.additional); <span class="comment">// 'data'</span>
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>The data gets passed along across the boundary.</p>
+<div class='diagram'>Host-->Sandbox:
+Note right of Host: Handshake
+Sandbox-->Host:
+Host->Sandbox: event:ping with additional:data
+</div><h2 class='anchorable-toc' id='toc_sending-data-with-a-request'>Sending Data With a Request</h2>
+<p>Similarly, you can send additional parameters across the boundary with a request.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> PingService = Oasis.Service.extend({
+  <span class="function">initialize</span>: <span class="keyword">function</span>() {
+    <span class="local-variable">this</span>.request(<span class="string"><span class="delimiter">'</span><span class="content">ping</span><span class="delimiter">'</span></span>, { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">tom</span><span class="delimiter">'</span></span> }).then(<span class="keyword">function</span>(data) {
+      console.log(data);
+    });
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>The additional parameters are available on the request handler after the <code>resolver</code>.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> PingConsumer = Oasis.Consumer.extend({
+  <span class="key">requests</span>: {
+    <span class="function">ping</span>: <span class="keyword">function</span>(resolver, options) {
+      resolver.resolve(<span class="string"><span class="delimiter">'</span><span class="content">hello </span><span class="delimiter">'</span></span> + options.name);
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>This will send a request to the sandbox with <code>{ name: &#39;tom&#39; }</code> as options, which
+the handler in the sandbox will use in its response.</p>
+<div class='diagram'>Host-->Sandbox:
+Note right of Host: Handshake
+Sandbox-->Host:
+Host->Sandbox: request:ping with name:tom
+Sandbox->Host: resolve:ping with 'hello tom'
+</div><h2 class='anchorable-toc' id='toc_cross-boundary-communication'>Cross Boundary Communication</h2>
+<p>When sending data with an <strong>event</strong> or in response to a <strong>request</strong>, you
+are sending data through a <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/web-messaging.html#channel-messaging">MessageChannel</a>.</p>
+
+<p>Modern browser support sending any of the following types across the boundary:</p>
+
+<ul>
+<li>Boolean</li>
+<li>Number</li>
+<li>String</li>
+<li>Date</li>
+<li>Regexp</li>
+<li>File<strong>&ast;</strong></li>
+<li>Blob<strong>&ast;</strong></li>
+<li>FileList<strong>&ast;</strong></li>
+<li>ImageData<strong>&ast;</strong></li>
+<li>ImageBitmap<strong>&ast;</strong></li>
+<li>Object containing any of these</li>
+<li>Array containing any of these</li>
+</ul>
+
+<p>The original version of <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/web-messaging.html#web-messaging">Web Messaging</a> only supported strings for
+communication. In older browsers, Oasis.js will attempt to polyfill the
+cloning algorithm used by newer browsers. However, cloning types marked with a
+<strong>&ast;</strong> in the above list is not possible. The good news is that most older
+browsers that don&#39;t support these new types also don&#39;t support &quot;structured
+cloning&quot;.</p>
+
+<p>For the broadest compatibility, you should limit the objects you send
+across the boundary (using <code>send</code>, <code>request</code> or <code>resolve</code>) to the list
+of types in the list above without an <strong>&ast;</strong>.</p>
+
+    </div>
+
+    <script>
+      $(".diagram").sequenceDiagram({theme: 'hand'});
+    </script>
+  </body>
+</html>
