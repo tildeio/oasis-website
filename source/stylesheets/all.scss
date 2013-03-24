@@ -12,7 +12,7 @@ $bottom-color: #00A9A9;
 }
 
 html {
-  @include background-image(linear-gradient($top-color, $bottom-color 1000px));
+  @include background-image(url(/images/noise.png), linear-gradient($top-color, $bottom-color 1000px));
   background-color: $bottom-color;
 }
 
@@ -25,7 +25,7 @@ header {
   background: url(/images/logo.png) no-repeat center;
   height: 150px;
   background-size: auto 100%;
-  text-indent: 100%;
+  text-indent: 200%;
 }
 
 h1 {
