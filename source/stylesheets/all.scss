@@ -11,13 +11,19 @@ $bottom-color: #00A9A9;
   box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 html {
   @include background-image(url(/images/noise.png), linear-gradient($top-color, $bottom-color 1000px));
   background-color: $bottom-color;
 }
 
 body {
-  margin: 20px;
+  padding-top: 20px;
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
@@ -26,6 +32,22 @@ header {
   height: 150px;
   background-size: auto 100%;
   text-indent: 200%;
+}
+
+footer {
+  margin-top: 24px;
+  padding: 16px;
+  background-color: rgba(0,0,0,0.6);
+  color: #eee;
+  text-align: center;
+
+  a {
+    margin: 0 9px;
+  }
+
+  p {
+    margin: 12px 0;
+  }
 }
 
 h1 {
