@@ -33,6 +33,7 @@ an iframe (or WebWorker) and executing the JavaScript inside of it.
 
 ```javascript
 Oasis.createSandbox('pingpong.js', {
+  capabilities: ['ping'],
   services: {
     ping: PingService
   }
@@ -135,8 +136,20 @@ var PingService = Oasis.Service.extend({
 });
 ```
 
-The `request` API uses [Promises][1], a standard way of waiting for
-a result for some asynchronous request.
+And here's how the sandbox would respond to the request:
+
+```javascript
+var PingConsumer = Oasis.Consumer.extend({
+  requests: {
+    ping: function() {
+      return 'pong';
+    }
+  }
+});
+```
+
+The `request` API also supports [Promises][1], a standard way of waiting for a
+result for some asynchronous request.
 
 In this case, the _Promise_ crosses the boundary into the sandbox, and
 can be fulfilled in the _Consumer_.
@@ -146,8 +159,11 @@ can be fulfilled in the _Consumer_.
 ```javascript
 var PingConsumer = Oasis.Consumer.extend({
   requests: {
-    ping: function(resolver) {
-      resolver.resolve('pong');
+    ping: function() {
+      return new Oasis.RSVP.Promise(function (resolve){
+        // do something asynchronous and then:
+        resolve('pong');
+      });
     }
   }
 });
@@ -221,13 +237,13 @@ var PingService = Oasis.Service.extend({
 });
 ```
 
-The additional parameters are available on the request handler after the `resolver`.
+The additional parameters are available on the request handler.
 
 ```javascript
 var PingConsumer = Oasis.Consumer.extend({
   requests: {
-    ping: function(resolver, options) {
-      resolver.resolve('hello ' + options.name);
+    ping: function(options) {
+      return 'hello ' + options.name;
     }
   }
 });
