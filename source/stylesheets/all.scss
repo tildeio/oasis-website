@@ -60,6 +60,13 @@ strong {
   font-weight: bold;
 }
 
+#github img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+}
+
 #content {
   @include box-shadow(0 0 7px rgba(0,0,0,0.4));
 
