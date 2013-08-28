@@ -28,6 +28,9 @@
   
   <body class="index">
     <header>Oasis.js</header>
+    <a href="http://github.com/tildeio/oasis.js" id="github">
+      <img src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"/>
+    </a>
 
     <div id="content">
       <div class="blurb">
@@ -49,7 +52,7 @@
 
 <p>First, create a service that you would like to expose:</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 </pre></td>
@@ -63,13 +66,15 @@
 URL should be a JavaScript file. Oasis.js will take care of creating
 an iframe (or WebWorker) and executing the JavaScript inside of it.</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
 5
+6
 </pre></td>
   <td class="code"><pre>Oasis.createSandbox(<span class="string"><span class="delimiter">'</span><span class="content">pingpong.js</span><span class="delimiter">'</span></span>, {
+  <span class="key">capabilities</span>: [<span class="string"><span class="delimiter">'</span><span class="content">ping</span><span class="delimiter">'</span></span>],
   <span class="key">services</span>: {
     <span class="key">ping</span>: PingService
   }
@@ -81,7 +86,7 @@ an iframe (or WebWorker) and executing the JavaScript inside of it.</p>
 
 <p>In <code>pingpong.js</code>, we&#39;ll set up a consumer for the service:</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 </pre></td>
@@ -93,7 +98,7 @@ an iframe (or WebWorker) and executing the JavaScript inside of it.</p>
 </div>
 <p>And connect it to the service in the parent:</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -110,7 +115,7 @@ an iframe (or WebWorker) and executing the JavaScript inside of it.</p>
 <p>That gives you an idea of the basic communication structure. Now,
 let&#39;s update the <code>PingService</code> to ping the sandbox.</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -130,7 +135,7 @@ sends a <code>ping</code> message to the sandbox.</p>
 
 <p>To respond back to the host environment, let&#39;s update our <code>PingConsumer</code>.</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -152,7 +157,7 @@ sends a <code>ping</code> message to the sandbox.</p>
 sandbox, and the sandbox sending a message back. Let&#39;s close the
 loop by listening for <code>pong</code> on the <code>PingService</code>.</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -194,7 +199,7 @@ to the sandbox as a <strong>request</strong> for a <code>pong</code>.</p>
 take a look at what it looks like to make a request from the host to
 the sandbox.</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -212,13 +217,9 @@ the sandbox.</p>
 </pre></td>
 </tr></table>
 </div>
-<p>The <code>request</code> API uses <a href="http://promises-aplus.github.com/promises-spec/">Promises</a>, a standard way of waiting for
-a result for some asynchronous request.</p>
-
-<p>In this case, the <em>Promise</em> crosses the boundary into the sandbox, and
-can be fulfilled in the <em>Consumer</em>.</p>
+<p>And here&#39;s how the sandbox would respond to the request:</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -228,8 +229,38 @@ can be fulfilled in the <em>Consumer</em>.</p>
 </pre></td>
   <td class="code"><pre><span class="keyword">var</span> PingConsumer = Oasis.Consumer.extend({
   <span class="key">requests</span>: {
-    <span class="function">ping</span>: <span class="keyword">function</span>(resolver) {
-      resolver.resolve(<span class="string"><span class="delimiter">'</span><span class="content">pong</span><span class="delimiter">'</span></span>);
+    <span class="function">ping</span>: <span class="keyword">function</span>() {
+      <span class="keyword">return</span> <span class="string"><span class="delimiter">'</span><span class="content">pong</span><span class="delimiter">'</span></span>;
+    }
+  }
+});
+</pre></td>
+</tr></table>
+</div>
+<p>The <code>request</code> API also supports <a href="http://promises-aplus.github.com/promises-spec/">Promises</a>, a standard way of waiting for a
+result for some asynchronous request.</p>
+
+<p>In this case, the <em>Promise</em> crosses the boundary into the sandbox, and
+can be fulfilled in the <em>Consumer</em>.</p>
+<div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
+  <td class="line-numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+<strong>10</strong>
+</pre></td>
+  <td class="code"><pre><span class="keyword">var</span> PingConsumer = Oasis.Consumer.extend({
+  <span class="key">requests</span>: {
+    <span class="function">ping</span>: <span class="keyword">function</span>() {
+      <span class="keyword">return</span> <span class="keyword">new</span> Oasis.RSVP.Promise(<span class="keyword">function</span> (resolve){
+        <span class="comment">// do something asynchronous and then:</span>
+        resolve(<span class="string"><span class="delimiter">'</span><span class="content">pong</span><span class="delimiter">'</span></span>);
+      });
     }
   }
 });
@@ -254,7 +285,7 @@ that is handled by the <code>requests</code> hash on the other side.</p>
 <p>When sending an event, you can send additional data. Simply pass additional
 parameters to the <code>send</code> method.</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -271,7 +302,7 @@ parameters to the <code>send</code> method.</p>
 <p>The additional parameters will be available in the event handler on the other
 side of the pipe.</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -297,7 +328,7 @@ Host->Sandbox: event:ping with additional:data
 </div><h2 class='anchorable-toc' id='toc_sending-data-with-a-request'>Sending Data With a Request</h2>
 <p>Similarly, you can send additional parameters across the boundary with a request.</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -315,9 +346,9 @@ Host->Sandbox: event:ping with additional:data
 </pre></td>
 </tr></table>
 </div>
-<p>The additional parameters are available on the request handler after the <code>resolver</code>.</p>
+<p>The additional parameters are available on the request handler.</p>
 <div class="highlight javascript "><div class="ribbon"></div><table class="CodeRay"><tr>
-  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1
+  <td class="line-numbers"><pre>1
 2
 3
 4
@@ -327,8 +358,8 @@ Host->Sandbox: event:ping with additional:data
 </pre></td>
   <td class="code"><pre><span class="keyword">var</span> PingConsumer = Oasis.Consumer.extend({
   <span class="key">requests</span>: {
-    <span class="function">ping</span>: <span class="keyword">function</span>(resolver, options) {
-      resolver.resolve(<span class="string"><span class="delimiter">'</span><span class="content">hello </span><span class="delimiter">'</span></span> + options.name);
+    <span class="function">ping</span>: <span class="keyword">function</span>(options) {
+      <span class="keyword">return</span> <span class="string"><span class="delimiter">'</span><span class="content">hello </span><span class="delimiter">'</span></span> + options.name;
     }
   }
 });

@@ -1,4 +1,4 @@
-/* line 17, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, /Users/davidjh/.rvm/gems/ruby-2.0.0-p0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -19,42 +19,42 @@ time, mark, audio, video {
   font-size: 100%;
   vertical-align: baseline; }
 
-/* line 22, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, /Users/davidjh/.rvm/gems/ruby-2.0.0-p0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1; }
 
-/* line 24, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, /Users/davidjh/.rvm/gems/ruby-2.0.0-p0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none; }
 
-/* line 26, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, /Users/davidjh/.rvm/gems/ruby-2.0.0-p0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-/* line 28, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, /Users/davidjh/.rvm/gems/ruby-2.0.0-p0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle; }
 
-/* line 30, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, /Users/davidjh/.rvm/gems/ruby-2.0.0-p0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none; }
-  /* line 103, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+  /* line 103, /Users/davidjh/.rvm/gems/ruby-2.0.0-p0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
   q:before, q:after, blockquote:before, blockquote:after {
     content: "";
     content: none; }
 
-/* line 32, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, /Users/davidjh/.rvm/gems/ruby-2.0.0-p0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none; }
 
-/* line 116, ../../../../.rvm/gems/ruby-1.9.3-p194/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, /Users/davidjh/.rvm/gems/ruby-2.0.0-p0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block; }
 
-/* line 9, highlight.css.scss */
+/* line 9, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
 #content .highlight {
   background-image: url(/images/code_background.gif);
   border: 1px solid #d1d1d1;
@@ -72,31 +72,31 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -webkit-box-shadow: 0 1px white, inset -1px 1px 4px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px white, inset -1px 1px 4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px white, inset -1px 1px 4px rgba(0, 0, 0, 0.1); }
-  /* line 21, highlight.css.scss */
+  /* line 21, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   #content .highlight table {
     margin: 0 0; }
-  /* line 25, highlight.css.scss */
+  /* line 25, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   #content .highlight .ribbon {
     position: absolute;
     right: 0;
     bottom: 6px;
     width: 52px;
     height: 20px; }
-  /* line 33, highlight.css.scss */
+  /* line 33, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   #content .highlight.javascript .ribbon, #content .highlight.js .ribbon {
     background-image: url(/images/js-ribbon.png); }
-  /* line 36, highlight.css.scss */
+  /* line 36, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   #content .highlight.html .ribbon {
     background-image: url(/images/html-ribbon.png); }
-  /* line 39, highlight.css.scss */
+  /* line 39, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   #content .highlight.handlebars .ribbon {
     background-image: url(/images/handlebars-ribbon.png); }
 
-/* line 44, highlight.css.scss */
+/* line 44, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
 .CodeRay {
   width: 100%;
   /* HTML */ }
-  /* line 46, highlight.css.scss */
+  /* line 46, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   .CodeRay td.line-numbers {
     width: 38px;
     text-align: center;
@@ -109,58 +109,58 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     -moz-border-radius-bottomleft: 5px;
     -webkit-border-bottom-left-radius: 5px;
     border-bottom-left-radius: 5px; }
-  /* line 56, highlight.css.scss */
+  /* line 56, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   .CodeRay td.code {
     padding: 8px 0 8px 13px; }
-  /* line 61, highlight.css.scss */
+  /* line 61, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   .CodeRay .tag {
     color: #1f58ce; }
-  /* line 65, highlight.css.scss */
+  /* line 65, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   .CodeRay .comment {
     color: #777777; }
-  /* line 69, highlight.css.scss */
+  /* line 69, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   .CodeRay .attribute-name {
     color: #1f58ce; }
-  /* line 73, highlight.css.scss */
+  /* line 73, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   .CodeRay .content {
     color: #153c8c; }
-  /* line 77, highlight.css.scss */
+  /* line 77, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   .CodeRay .string {
     color: #1f58ce; }
-  /* line 81, highlight.css.scss */
+  /* line 81, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   .CodeRay .keyword {
     color: #ce791f; }
-  /* line 85, highlight.css.scss */
+  /* line 85, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   .CodeRay .key, .CodeRay .function {
     color: #2b1fce; }
-  /* line 89, highlight.css.scss */
+  /* line 89, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
   .CodeRay .local-variable {
     color: #1f58ce; }
 
-/* line 99, highlight.css.scss */
+/* line 99, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
 .handlebars .CodeRay .inline,
 .handlebars .CodeRay .inline .inline-delimiter,
 .handlebars .CodeRay .inline .delimiter {
   color: #00aa00; }
-/* line 103, highlight.css.scss */
+/* line 103, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
 .handlebars .CodeRay .inline .attribute-name {
   color: #007700; }
-/* line 107, highlight.css.scss */
+/* line 107, /Users/davidjh/devel/oasis-site/source/stylesheets/highlight.css.scss */
 .handlebars .CodeRay .inline .attribute-value,
 .handlebars .CodeRay .inline .content {
   color: #004400; }
 
-/* line 10, all.scss */
+/* line 10, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
 * {
   box-sizing: border-box; }
 
-/* line 14, all.scss */
+/* line 14, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
 html, body {
   width: 100%;
   margin: 0;
   padding: 0; }
 
-/* line 20, all.scss */
+/* line 20, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
 html {
   background-image: url(/images/noise.png), -webkit-gradient(linear, 50% 0%, 50% 1000, color-stop(0%, #d6effc), color-stop(100%, #00a9a9));
   background-image: url(/images/noise.png), -webkit-linear-gradient(#d6effc, #00a9a9 1000px);
@@ -169,43 +169,50 @@ html {
   background-image: url(/images/noise.png), linear-gradient(#d6effc, #00a9a9 1000px);
   background-color: #00a9a9; }
 
-/* line 25, all.scss */
+/* line 25, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
 body {
   padding-top: 20px;
   font-family: "Helvetica Neue", Helvetica, sans-serif; }
 
-/* line 30, all.scss */
+/* line 30, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
 header {
   background: url(/images/logo.png) no-repeat center;
   height: 150px;
   background-size: auto 100%;
-  text-indent: 200%; }
+  text-indent: -999em; }
 
-/* line 37, all.scss */
+/* line 37, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
 footer {
   margin-top: 24px;
   padding: 16px;
   background-color: rgba(0, 0, 0, 0.6);
   color: #eee;
   text-align: center; }
-  /* line 44, all.scss */
+  /* line 44, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   footer a {
     margin: 0 9px; }
-  /* line 48, all.scss */
+  /* line 48, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   footer p {
     margin: 12px 0; }
 
-/* line 53, all.scss */
+/* line 53, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
 h1 {
   font-size: 24px;
   text-align: center;
   font-weight: bold; }
 
-/* line 59, all.scss */
+/* line 59, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
 strong {
   font-weight: bold; }
 
-/* line 63, all.scss */
+/* line 63, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+#github img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none; }
+
+/* line 70, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
 #content {
   -webkit-box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
@@ -215,7 +222,7 @@ strong {
   margin: 0 auto;
   padding: 20px;
   border-radius: 10px; }
-  /* line 72, all.scss */
+  /* line 79, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content .blurb {
     width: 100%;
     background-color: #a6e6e6;
@@ -225,13 +232,13 @@ strong {
     border-radius: 10px;
     font-size: 18px;
     line-height: 150%; }
-    /* line 82, all.scss */
+    /* line 89, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
     #content .blurb p {
       margin: 0; }
-    /* line 86, all.scss */
+    /* line 93, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
     #content .blurb p + p {
       margin-top: 18px; }
-  /* line 91, all.scss */
+  /* line 98, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content code {
     font-family: Menlo, Monaco, monospace;
     font-size: 100%;
@@ -240,7 +247,7 @@ strong {
     border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px; }
-  /* line 101, all.scss */
+  /* line 108, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content h2 {
     color: #255;
     margin-top: 20px;
@@ -248,18 +255,18 @@ strong {
     padding: 0 5px 5px 5px;
     font-size: 20px;
     font-weight: bold; }
-  /* line 110, all.scss */
+  /* line 117, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content p {
     margin: 10px 0;
     line-height: 150%; }
-  /* line 115, all.scss */
+  /* line 122, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content img {
     width: 100%;
     background-color: #fff;
     border: 1px solid #00a9a9;
     border-radius: 10px;
     box-shadow: 0 0 5px #00a9a9; }
-  /* line 123, all.scss */
+  /* line 130, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content .diagram {
     background: rgba(255, 255, 255, 0.7);
     border: 1px solid #d1d1d1;
@@ -267,23 +274,23 @@ strong {
     -webkit-box-shadow: 0 1px white, inset -1px 1px 4px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 1px white, inset -1px 1px 4px rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px white, inset -1px 1px 4px rgba(0, 0, 0, 0.1); }
-    /* line 129, all.scss */
+    /* line 136, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
     #content .diagram svg {
       display: block;
       margin: 0 auto; }
-  /* line 135, all.scss */
+  /* line 142, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content .CodeRay td.code {
     background-color: rgba(255, 255, 255, 0.7); }
-  /* line 139, all.scss */
+  /* line 146, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content li {
     list-style-type: disc;
     margin-left: 20px;
     line-height: 24px;
     color: #699; }
-    /* line 145, all.scss */
+    /* line 152, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
     #content li::first-line {
       color: #366; }
-    /* line 149, all.scss */
+    /* line 156, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
     #content li strong {
       padding: 5px;
       font-family: Menlo, Monaco, monospace;
