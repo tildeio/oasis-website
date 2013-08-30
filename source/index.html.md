@@ -17,6 +17,11 @@ title: Welcome to Oasis
   </p>
 </div>
 
+<h2>Download</h2>
+
+You can download the latest version of Oasis.js 
+<a href="https://raw.github.com/tildeio/oasis.js/latest/dist/oasis.js.html">here</a>.
+
 <h2>Getting Started</h2>
 
 First, create a service that you would like to expose:
