@@ -224,6 +224,7 @@ strong {
   border-radius: 10px; }
   /* line 79, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content .blurb {
+    display: block;
     width: 100%;
     background-color: #a6e6e6;
     color: #022;
@@ -232,13 +233,17 @@ strong {
     border-radius: 10px;
     font-size: 18px;
     line-height: 150%; }
-    /* line 89, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+    /* line 90, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
     #content .blurb p {
       margin: 0; }
-    /* line 93, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+    /* line 94, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
     #content .blurb p + p {
       margin-top: 18px; }
-  /* line 98, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+  /* line 99, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+  #content small, #content small.blurb {
+    background-color: #bcecec;
+    font-size: small; }
+  /* line 104, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content code {
     font-family: Menlo, Monaco, monospace;
     font-size: 100%;
@@ -247,7 +252,7 @@ strong {
     border: 1px solid rgba(0, 0, 0, 0.1);
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px; }
-  /* line 108, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+  /* line 114, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content h2 {
     color: #255;
     margin-top: 20px;
@@ -255,18 +260,18 @@ strong {
     padding: 0 5px 5px 5px;
     font-size: 20px;
     font-weight: bold; }
-  /* line 117, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+  /* line 123, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content p {
     margin: 10px 0;
     line-height: 150%; }
-  /* line 122, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+  /* line 128, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content img {
     width: 100%;
     background-color: #fff;
     border: 1px solid #00a9a9;
     border-radius: 10px;
     box-shadow: 0 0 5px #00a9a9; }
-  /* line 130, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+  /* line 136, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content .diagram {
     background: rgba(255, 255, 255, 0.7);
     border: 1px solid #d1d1d1;
@@ -274,23 +279,23 @@ strong {
     -webkit-box-shadow: 0 1px white, inset -1px 1px 4px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 1px white, inset -1px 1px 4px rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px white, inset -1px 1px 4px rgba(0, 0, 0, 0.1); }
-    /* line 136, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+    /* line 142, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
     #content .diagram svg {
       display: block;
       margin: 0 auto; }
-  /* line 142, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+  /* line 148, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content .CodeRay td.code {
     background-color: rgba(255, 255, 255, 0.7); }
-  /* line 146, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+  /* line 152, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
   #content li {
     list-style-type: disc;
     margin-left: 20px;
     line-height: 24px;
     color: #699; }
-    /* line 152, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+    /* line 158, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
     #content li::first-line {
       color: #366; }
-    /* line 156, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
+    /* line 162, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
     #content li strong {
       padding: 5px;
       font-family: Menlo, Monaco, monospace;

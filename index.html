@@ -78,7 +78,7 @@ an iframe (or WebWorker) and executing the JavaScript inside of it.</p>
 5
 6
 </pre></td>
-  <td class="code"><pre>Oasis.createSandbox(<span class="string"><span class="delimiter">'</span><span class="content">pingpong.js</span><span class="delimiter">'</span></span>, {
+  <td class="code"><pre>oasis.createSandbox(<span class="string"><span class="delimiter">'</span><span class="content">pingpong.js</span><span class="delimiter">'</span></span>, {
   <span class="key">capabilities</span>: [<span class="string"><span class="delimiter">'</span><span class="content">ping</span><span class="delimiter">'</span></span>],
   <span class="key">services</span>: {
     <span class="key">ping</span>: PingService
@@ -87,6 +87,12 @@ an iframe (or WebWorker) and executing the JavaScript inside of it.</p>
 </pre></td>
 </tr></table>
 </div>
+<p><small class="blurb">
+  Note that you don&#39;t need to create your own <code>Oasis</code> instance.  Oasis.js
+  creates one for you, <code>oasis</code>, and this implicit instance is enough for most
+  cases.
+</small></p>
+
 <p>This will give the sandbox access to the <code>PingService</code>.</p>
 
 <p>In <code>pingpong.js</code>, we&#39;ll set up a consumer for the service:</p>
