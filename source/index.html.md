@@ -37,13 +37,19 @@ URL should be a JavaScript file. Oasis.js will take care of creating
 an iframe (or WebWorker) and executing the JavaScript inside of it.
 
 ```javascript
-Oasis.createSandbox('pingpong.js', {
+oasis.createSandbox('pingpong.js', {
   capabilities: ['ping'],
   services: {
     ping: PingService
   }
 });
 ```
+
+<small class="blurb">
+  Note that you don't need to create your own `Oasis` instance.  Oasis.js
+  creates one for you, `oasis`, and this implicit instance is enough for most
+  cases.
+</small>
 
 This will give the sandbox access to the `PingService`.
 
