@@ -37,7 +37,8 @@ URL should be a JavaScript file. Oasis.js will take care of creating
 an iframe (or WebWorker) and executing the JavaScript inside of it.
 
 ```javascript
-oasis.createSandbox('pingpong.js', {
+oasis.createSandbox({
+  url: 'pingpong.js',
   capabilities: ['ping'],
   services: {
     ping: PingService
@@ -64,7 +65,7 @@ var PingConsumer = Oasis.Consumer.extend({
 And connect it to the service in the parent:
 
 ```javascript
-Oasis.connect({
+oasis.connect({
   consumers: {
     ping: PingConsumer
   }
