@@ -77,8 +77,10 @@ an iframe (or WebWorker) and executing the JavaScript inside of it.</p>
 4
 5
 6
+7
 </pre></td>
-  <td class="code"><pre>oasis.createSandbox(<span class="string"><span class="delimiter">'</span><span class="content">pingpong.js</span><span class="delimiter">'</span></span>, {
+  <td class="code"><pre>oasis.createSandbox({
+  <span class="key">url</span>: <span class="string"><span class="delimiter">'</span><span class="content">pingpong.js</span><span class="delimiter">'</span></span>,
   <span class="key">capabilities</span>: [<span class="string"><span class="delimiter">'</span><span class="content">ping</span><span class="delimiter">'</span></span>],
   <span class="key">services</span>: {
     <span class="key">ping</span>: PingService
@@ -115,7 +117,7 @@ an iframe (or WebWorker) and executing the JavaScript inside of it.</p>
 4
 5
 </pre></td>
-  <td class="code"><pre>Oasis.connect({
+  <td class="code"><pre>oasis.connect({
   <span class="key">consumers</span>: {
     <span class="key">ping</span>: PingConsumer
   }
