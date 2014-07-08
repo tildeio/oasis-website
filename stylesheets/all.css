@@ -162,11 +162,11 @@ html, body {
 
 /* line 20, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
 html {
-  background-image: url(/images/noise.png), -webkit-gradient(linear, 50% 0%, 50% 1000, color-stop(0%, #d6effc), color-stop(100%, #00a9a9));
-  background-image: url(/images/noise.png), -webkit-linear-gradient(#d6effc, #00a9a9 1000px);
-  background-image: url(/images/noise.png), -moz-linear-gradient(#d6effc, #00a9a9 1000px);
-  background-image: url(/images/noise.png), -o-linear-gradient(#d6effc, #00a9a9 1000px);
-  background-image: url(/images/noise.png), linear-gradient(#d6effc, #00a9a9 1000px);
+  background-image: url(../images/noise.png), -webkit-gradient(linear, 50% 0%, 50% 1000, color-stop(0%, #d6effc), color-stop(100%, #00a9a9));
+  background-image: url(../images/noise.png), -webkit-linear-gradient(#d6effc, #00a9a9 1000px);
+  background-image: url(../images/noise.png), -moz-linear-gradient(#d6effc, #00a9a9 1000px);
+  background-image: url(../images/noise.png), -o-linear-gradient(#d6effc, #00a9a9 1000px);
+  background-image: url(../images/noise.png), linear-gradient(#d6effc, #00a9a9 1000px);
   background-color: #00a9a9; }
 
 /* line 25, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
@@ -176,7 +176,7 @@ body {
 
 /* line 30, /Users/davidjh/devel/oasis-site/source/stylesheets/all.scss */
 header {
-  background: url(/images/logo.png) no-repeat center;
+  background: url(../images/logo.png) no-repeat center;
   height: 150px;
   background-size: auto 100%;
   text-indent: -999em; }
