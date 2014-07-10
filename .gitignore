@@ -12,3 +12,6 @@
 
 # Ignore Sass' cache
 /.sass-cache
+
+.ruby-version
+.ruby-gemset
